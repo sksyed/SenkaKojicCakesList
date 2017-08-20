@@ -31,6 +31,8 @@ class CakesViewModel: CakesViewModelProtocol {
     
     var cakes: [Cake] = []
     
+    //MARK: - getData()
+    
     func getData() {
         
         guard let url = URL(string: self.urlString) else {
@@ -41,20 +43,17 @@ class CakesViewModel: CakesViewModelProtocol {
         let request = URLRequest(url: url)
         
         let task = self.urlSession.dataTask(with: request) { (data, response, error) in
+            
             if error == nil, let usableData = data {
                 
-                guard let jsonData = self.getJsonData(data: usableData) else {
+                guard let jsonArray = usableData.serializeToDictionaryArray() else {
                     
                     return
                 }
                 
-                guard let jsonDictionary = self.getJsonDictionary(jsonData) else {
-                    
-                    return
-                }
                 DispatchQueue.main.async {
-                    
-                    self.cakes = Cake.cakeFromJsonArray(jsonArray: jsonDictionary)
+                
+                    self.cakes = Cake.cakeFromJsonArray(jsonArray: jsonArray)
                     
                     self.delegate?.reloadData()
                 }
@@ -62,32 +61,5 @@ class CakesViewModel: CakesViewModelProtocol {
         }
         
         task.resume()
-        
-    }
-    
-    private func getJsonData(data: Data) -> AnyObject? {
-        
-        do {
-            
-            let jsonResult  = try JSONSerialization.jsonObject(with: data, options: .mutableContainers)
-            
-            return jsonResult as AnyObject
-            
-        } catch {
-            
-            
-        }
-        
-        return nil
-    }
-    
-    private func getJsonDictionary(_ jsonResult: AnyObject) -> [[AnyHashable: Any]]? {
-        
-        guard let jsonDictionary = jsonResult as? [[AnyHashable: Any]] else {
-            
-            return nil
-        }
-        
-        return jsonDictionary
     }
 }

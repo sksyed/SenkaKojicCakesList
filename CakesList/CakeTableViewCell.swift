@@ -22,23 +22,8 @@ class CakeTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    
     func updateCellImage(withUrl: URL) {
         
-        let request = URLRequest(url: withUrl)
-        
-        let task = self.urlSession.dataTask(with: request) { (data, response, error) in
-            if error == nil, let usableData = data {
-                
-                let image = UIImage(data: usableData)
-                
-                DispatchQueue.main.async {
-                     self.cakeImageView.image = image
-                }
-                
-            }
-        }
-        
-        task.resume()
+        self.cakeImageView.imageFromUrl(url: withUrl)
     }
 }

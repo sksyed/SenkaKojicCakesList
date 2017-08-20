@@ -16,6 +16,7 @@ class CakesViewController: UIViewController {
     fileprivate var viewModel: CakesViewModelProtocol?
     fileprivate var refreshControl = UIRefreshControl()
     
+    //MARK: - viewDidLoad()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +32,13 @@ class CakesViewController: UIViewController {
         self.getCakeData()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+    private func configureRefreshControl() {
         
-        self.refreshTableView()
+        let selector = #selector(CakesViewController.refreshCakeData)
+        
+        self.refreshControl.addTarget(self, action: selector, for: UIControlEvents.valueChanged)
+        
+        self.cakesTableView.addSubview(self.refreshControl)
     }
     
     private func registerNibs() {
@@ -44,25 +48,31 @@ class CakesViewController: UIViewController {
         self.cakesTableView.register(cakeCell, forCellReuseIdentifier: self.cellIdentifier)
     }
     
-    fileprivate func refreshTableView() {
-        
-        self.cakesTableView.reloadData()
-    }
-    
-    @objc private func getCakeData() {
+    private func getCakeData() {
         
         self.refreshControl.beginRefreshing()
         
         self.viewModel?.getData()
     }
     
-    private func configureRefreshControl() {
+    @objc private func refreshCakeData() {
         
-        let selector = #selector(CakesViewController.getCakeData)
+        self.refreshTableView()
         
-        self.refreshControl.addTarget(self, action: selector, for: UIControlEvents.valueChanged)
+        self.getCakeData()
+    }
+    
+    fileprivate func refreshTableView() {
         
-        self.cakesTableView.addSubview(self.refreshControl)
+        self.cakesTableView.reloadData()
+    }
+    
+    //MARK: - viewWillAppear
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        self.refreshTableView()
     }
 }
 
@@ -81,9 +91,9 @@ extension CakesViewController: UITableViewDataSource {
             
             let cake = self.viewModel?.cakes[indexPath.row]
             
-            cakeCell.cakeTitle.text = cake!.title
+            cakeCell.cakeTitle.text = cake?.title ?? ""
             
-            cakeCell.cakeDescription.text = cake!.cakeDescription
+            cakeCell.cakeDescription.text = cake?.cakeDescription ?? ""
             
             cell = cakeCell
         }
@@ -106,11 +116,16 @@ extension CakesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell:UITableViewCell, forRowAt indexPath:IndexPath) {
         
-        let imageURL = self.viewModel?.cakes[indexPath.row].imageURL
+        guard let imageURL = self.viewModel?.cakes[indexPath.row].imageURL else {
+            
+            return
+        }
         
-        let updatingCell = cell as! CakeTableViewCell
-        
-        updatingCell.updateCellImage(withUrl: imageURL!)
+        if let updatingCell = cell as? CakeTableViewCell {
+            
+            updatingCell.updateCellImage(withUrl: imageURL)
+            
+        }
     }
 }
 

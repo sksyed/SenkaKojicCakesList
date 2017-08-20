@@ -18,6 +18,8 @@
 		347649B61F48B58800F8794D /* CakesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649B51F48B58800F8794D /* CakesViewModel.swift */; };
 		347649B81F49CD0F00F8794D /* Cake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649B71F49CD0F00F8794D /* Cake.swift */; };
 		347649BA1F49CF8F00F8794D /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649B91F49CF8F00F8794D /* DictionaryExtensions.swift */; };
+		347649BE1F49EDD900F8794D /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649BD1F49EDD900F8794D /* DataExtensions.swift */; };
+		347649C11F49F5BB00F8794D /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649C01F49F5BB00F8794D /* UIImageViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,9 +45,11 @@
 		347649AE1F48AED900F8794D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Screen.storyboard"; path = "../Launch Screen.storyboard"; sourceTree = "<group>"; };
 		347649B11F48B27300F8794D /* CakeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CakeTableViewCell.swift; sourceTree = "<group>"; };
 		347649B21F48B27300F8794D /* CakeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CakeTableViewCell.xib; sourceTree = "<group>"; };
-		347649B51F48B58800F8794D /* CakesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CakesViewModel.swift; sourceTree = "<group>"; };
+		347649B51F48B58800F8794D /* CakesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CakesViewModel.swift; path = ../CakesViewModel.swift; sourceTree = "<group>"; };
 		347649B71F49CD0F00F8794D /* Cake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cake.swift; sourceTree = "<group>"; };
-		347649B91F49CF8F00F8794D /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
+		347649B91F49CF8F00F8794D /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryExtensions.swift; path = ../DictionaryExtensions.swift; sourceTree = "<group>"; };
+		347649BD1F49EDD900F8794D /* DataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataExtensions.swift; path = ../DataExtensions.swift; sourceTree = "<group>"; };
+		347649C01F49F5BB00F8794D /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,9 +73,7 @@
 		347649821F48AD9600F8794D = {
 			isa = PBXGroup;
 			children = (
-				347649B91F49CF8F00F8794D /* DictionaryExtensions.swift */,
 				347649B71F49CD0F00F8794D /* Cake.swift */,
-				347649B51F48B58800F8794D /* CakesViewModel.swift */,
 				3476498D1F48AD9600F8794D /* CakesList */,
 				347649B01F48B23700F8794D /* Custom Cell */,
 				347649A21F48AD9600F8794D /* CakesListTests */,
@@ -92,11 +94,13 @@
 			isa = PBXGroup;
 			children = (
 				3476498E1F48AD9600F8794D /* AppDelegate.swift */,
-				347649901F48AD9600F8794D /* CakesViewController.swift */,
+				347649BB1F49E89900F8794D /* ViewController */,
+				347649BC1F49ECD500F8794D /* ViewModel */,
 				347649921F48AD9600F8794D /* Main.storyboard */,
 				347649AE1F48AED900F8794D /* Launch Screen.storyboard */,
 				347649951F48AD9600F8794D /* Assets.xcassets */,
 				3476499A1F48AD9600F8794D /* Info.plist */,
+				347649BF1F49EF2F00F8794D /* Extensions */,
 			);
 			path = CakesList;
 			sourceTree = "<group>";
@@ -118,6 +122,32 @@
 			);
 			name = "Custom Cell";
 			path = CakesList;
+			sourceTree = "<group>";
+		};
+		347649BB1F49E89900F8794D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				347649901F48AD9600F8794D /* CakesViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		347649BC1F49ECD500F8794D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				347649B51F48B58800F8794D /* CakesViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		347649BF1F49EF2F00F8794D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				347649BD1F49EDD900F8794D /* DataExtensions.swift */,
+				347649B91F49CF8F00F8794D /* DictionaryExtensions.swift */,
+				347649C01F49F5BB00F8794D /* UIImageViewExtensions.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,8 +258,10 @@
 			files = (
 				347649911F48AD9600F8794D /* CakesViewController.swift in Sources */,
 				347649B31F48B27300F8794D /* CakeTableViewCell.swift in Sources */,
+				347649C11F49F5BB00F8794D /* UIImageViewExtensions.swift in Sources */,
 				347649B81F49CD0F00F8794D /* Cake.swift in Sources */,
 				347649B61F48B58800F8794D /* CakesViewModel.swift in Sources */,
+				347649BE1F49EDD900F8794D /* DataExtensions.swift in Sources */,
 				3476498F1F48AD9600F8794D /* AppDelegate.swift in Sources */,
 				347649BA1F49CF8F00F8794D /* DictionaryExtensions.swift in Sources */,
 			);
