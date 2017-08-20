@@ -30,11 +30,4 @@ extension Dictionary {
         
         return ""
     }
-    
-    func urlForKey(_ key: String) -> URL {
-        
-        let urlString = self.stringValueForKey(key)
-        
-        return URL(string: urlString)!
-    }
 }

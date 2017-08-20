@@ -116,14 +116,14 @@ extension CakesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell:UITableViewCell, forRowAt indexPath:IndexPath) {
         
-        guard let imageURL = self.viewModel?.cakes[indexPath.row].imageURL else {
+        guard let imageUrlString = self.viewModel?.cakes[indexPath.row].imageUrlString else {
             
             return
         }
         
         if let updatingCell = cell as? CakeTableViewCell {
             
-            updatingCell.updateCellImage(withUrl: imageURL)
+            updatingCell.updateCellImage(withUrlFromString: imageUrlString)
             
         }
     }

@@ -18,12 +18,8 @@ class CakeTableViewCell: UITableViewCell {
     
     var urlSession = URLSession.shared
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
-    func updateCellImage(withUrl: URL) {
+    func updateCellImage(withUrlFromString urlString: String) {
         
-        self.cakeImageView.imageFromUrl(url: withUrl)
+        self.cakeImageView.imageFromUrlString(urlString: urlString, session: self.urlSession)
     }
 }

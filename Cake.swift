@@ -12,33 +12,21 @@ class Cake: NSObject {
     
     var title = ""
     var cakeDescription = ""
-    var imageURL: URL?
+    var imageUrlString = ""
         
-    convenience init(withTitle title: String, cakeDescription: String, imageURL: URL) {
+    convenience init(withTitle title: String, cakeDescription: String, imageUrlString: String) {
         self.init()
         self.title = title
         self.cakeDescription = cakeDescription
-        self.imageURL = imageURL
+        self.imageUrlString = imageUrlString
     }
     
     convenience init(withDictionary dictionary: [AnyHashable: Any]) {
         
         let title = dictionary.stringValueForKey("title")
         let cakeDescription = dictionary.stringValueForKey("desc")
-        let imageURL = dictionary.urlForKey("image")
+        let imageUrlString = dictionary.stringValueForKey("image")
         
-        self.init(withTitle: title, cakeDescription: cakeDescription, imageURL: imageURL)
-    }
-    
-    class func cakeFromJsonArray(jsonArray: [[AnyHashable: Any]]) -> [Cake] {
-        
-        var cakes = [Cake]()
-        
-        for dictionary in jsonArray {
-            
-            cakes.append(Cake(withDictionary: dictionary))
-        }
-        
-        return cakes
+        self.init(withTitle: title, cakeDescription: cakeDescription, imageUrlString: imageUrlString)
     }
 }

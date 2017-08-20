@@ -51,15 +51,27 @@ class CakesViewModel: CakesViewModelProtocol {
                     return
                 }
                 
-                DispatchQueue.main.async {
-                
-                    self.cakes = Cake.cakeFromJsonArray(jsonArray: jsonArray)
+                DispatchQueue.main.async { [weak self] in
                     
-                    self.delegate?.reloadData()
+                    self?.cakes = self?.cakesFromJsonArray(jsonArray: jsonArray) ?? [Cake]()
+                    
+                    self?.delegate?.reloadData()
                 }
             }
         }
         
         task.resume()
+    }
+    
+    private func cakesFromJsonArray(jsonArray: [[AnyHashable: Any]]) -> [Cake] {
+        
+        var cakes = [Cake]()
+        
+        for dictionary in jsonArray {
+            
+            cakes.append(Cake(withDictionary: dictionary))
+        }
+        
+        return cakes
     }
 }
