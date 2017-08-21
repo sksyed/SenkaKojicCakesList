@@ -12,8 +12,9 @@ class CakesViewController: UIViewController {
     
     @IBOutlet weak var cakesTableView: UITableView!
     
+    var viewModel: CakesViewModelProtocol = CakesViewModel()
+    
     fileprivate let cellIdentifier = "CakeTableViewCell"
-    fileprivate var viewModel: CakesViewModelProtocol?
     fileprivate var refreshControl = UIRefreshControl()
     
     //MARK: - viewDidLoad()
@@ -21,9 +22,7 @@ class CakesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.viewModel = CakesViewModel()
-        
-        self.viewModel?.delegate = self
+        self.viewModel.delegate = self
         
         self.configureRefreshControl()
         
@@ -52,7 +51,7 @@ class CakesViewController: UIViewController {
         
         self.refreshControl.beginRefreshing()
         
-        self.viewModel?.getData()
+        self.viewModel.getData()
     }
     
     @objc private func refreshCakeData() {
@@ -80,7 +79,7 @@ extension CakesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.viewModel?.cakes.count ?? 1
+        return self.viewModel.cakes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -89,11 +88,11 @@ extension CakesViewController: UITableViewDataSource {
         
         if let cakeCell = cell as? CakeTableViewCell {
             
-            let cake = self.viewModel?.cakes[indexPath.row]
+            let cake = self.viewModel.cakes[indexPath.row]
             
-            cakeCell.cakeTitle.text = cake?.title ?? ""
+            cakeCell.cakeTitle.text = cake.title
             
-            cakeCell.cakeDescription.text = cake?.cakeDescription ?? ""
+            cakeCell.cakeDescription.text = cake.cakeDescription
             
             cell = cakeCell
         }
@@ -116,10 +115,7 @@ extension CakesViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell:UITableViewCell, forRowAt indexPath:IndexPath) {
         
-        guard let imageUrlString = self.viewModel?.cakes[indexPath.row].imageUrlString else {
-            
-            return
-        }
+        let imageUrlString = self.viewModel.cakes[indexPath.row].imageUrlString
         
         if let updatingCell = cell as? CakeTableViewCell {
             

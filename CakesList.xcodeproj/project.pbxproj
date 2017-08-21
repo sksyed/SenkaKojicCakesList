@@ -20,6 +20,12 @@
 		347649BA1F49CF8F00F8794D /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649B91F49CF8F00F8794D /* DictionaryExtensions.swift */; };
 		347649BE1F49EDD900F8794D /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649BD1F49EDD900F8794D /* DataExtensions.swift */; };
 		347649C11F49F5BB00F8794D /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649C01F49F5BB00F8794D /* UIImageViewExtensions.swift */; };
+		347649C91F4A24B700F8794D /* CakesViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649C81F4A24B700F8794D /* CakesViewControllerTest.swift */; };
+		347649CB1F4A282500F8794D /* UITableViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649CA1F4A282500F8794D /* UITableViewSpy.swift */; };
+		347649CD1F4A6FB700F8794D /* CakeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649CC1F4A6FB700F8794D /* CakeTests.swift */; };
+		347649CF1F4A726400F8794D /* CakesViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649CE1F4A726400F8794D /* CakesViewModelTests.swift */; };
+		347649D31F4A7D0200F8794D /* UIImageViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649D21F4A7D0200F8794D /* UIImageViewSpy.swift */; };
+		347649D51F4A7D8600F8794D /* CakeTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347649D41F4A7D8600F8794D /* CakeTableViewCellTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +56,12 @@
 		347649B91F49CF8F00F8794D /* DictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryExtensions.swift; path = ../DictionaryExtensions.swift; sourceTree = "<group>"; };
 		347649BD1F49EDD900F8794D /* DataExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataExtensions.swift; path = ../DataExtensions.swift; sourceTree = "<group>"; };
 		347649C01F49F5BB00F8794D /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		347649C81F4A24B700F8794D /* CakesViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CakesViewControllerTest.swift; sourceTree = "<group>"; };
+		347649CA1F4A282500F8794D /* UITableViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewSpy.swift; sourceTree = "<group>"; };
+		347649CC1F4A6FB700F8794D /* CakeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CakeTests.swift; sourceTree = "<group>"; };
+		347649CE1F4A726400F8794D /* CakesViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CakesViewModelTests.swift; sourceTree = "<group>"; };
+		347649D21F4A7D0200F8794D /* UIImageViewSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageViewSpy.swift; sourceTree = "<group>"; };
+		347649D41F4A7D8600F8794D /* CakeTableViewCellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CakeTableViewCellTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +82,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		342D12FC1F4A862E00F9BC3E /* Spies */ = {
+			isa = PBXGroup;
+			children = (
+				347649CA1F4A282500F8794D /* UITableViewSpy.swift */,
+				347649D21F4A7D0200F8794D /* UIImageViewSpy.swift */,
+			);
+			name = Spies;
+			sourceTree = "<group>";
+		};
 		347649821F48AD9600F8794D = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +131,11 @@
 			children = (
 				347649A31F48AD9600F8794D /* CakesListTests.swift */,
 				347649A51F48AD9600F8794D /* Info.plist */,
+				347649C81F4A24B700F8794D /* CakesViewControllerTest.swift */,
+				347649CC1F4A6FB700F8794D /* CakeTests.swift */,
+				347649CE1F4A726400F8794D /* CakesViewModelTests.swift */,
+				347649D41F4A7D8600F8794D /* CakeTableViewCellTests.swift */,
+				342D12FC1F4A862E00F9BC3E /* Spies */,
 			);
 			path = CakesListTests;
 			sourceTree = "<group>";
@@ -278,7 +304,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				347649CB1F4A282500F8794D /* UITableViewSpy.swift in Sources */,
+				347649CD1F4A6FB700F8794D /* CakeTests.swift in Sources */,
+				347649C91F4A24B700F8794D /* CakesViewControllerTest.swift in Sources */,
+				347649CF1F4A726400F8794D /* CakesViewModelTests.swift in Sources */,
 				347649A41F48AD9600F8794D /* CakesListTests.swift in Sources */,
+				347649D51F4A7D8600F8794D /* CakeTableViewCellTests.swift in Sources */,
+				347649D31F4A7D0200F8794D /* UIImageViewSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +504,7 @@
 				347649AA1F48AD9600F8794D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		347649AB1F48AD9600F8794D /* Build configuration list for PBXNativeTarget "CakesListTests" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +513,7 @@
 				347649AD1F48AD9600F8794D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
